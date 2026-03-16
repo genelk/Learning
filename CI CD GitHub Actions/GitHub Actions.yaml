@@ -1,0 +1,44 @@
+# .github/workflows/ml-pipeline.yml
+name: ML Model CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Run unit tests
+        run: |
+          pytest tests/
+      
+      - name: Run data validation
+        run: |
+          python scripts/validate_data.py
+      
+      - name: Test model training
+        run: |
+          python train.py --test-mode
+  
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to production
+        run: |
+          python deploy_model.py --env production
