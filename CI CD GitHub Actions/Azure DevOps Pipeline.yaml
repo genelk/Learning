@@ -1,0 +1,43 @@
+# azure-pipelines.yml
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.9'
+
+- script: |
+    pip install -r requirements.txt
+    pytest tests/
+  displayName: 'Install and Test'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'my-service-connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az ml model deploy --name mymodel --model model.pkl
+```
+
+### **What Interviewers Would Ask:**
+
+- "Walk me through your CI/CD pipeline for ML models"
+- "How do you handle model versioning in production?"
+- "What tests do you run before deploying a model?"
+- "How do you rollback if a model deployment fails?"
+- "Explain your branching strategy and deployment gates"
+
+### **Beginner Project (1 Week):**
+```
+Create a simple GitHub Actions pipeline:
+1. Create GitHub repo with a simple ML model
+2. Write basic unit tests (pytest)
+3. Create .github/workflows/ci.yml
+4. Configure to run tests on every push
+5. Add automated deployment step
+6. Test it by pushing code
