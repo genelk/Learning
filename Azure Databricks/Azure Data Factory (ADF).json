@@ -1,0 +1,16 @@
+// Pipeline orchestration - like Airflow but Azure-native
+// You'd create pipelines with Copy Data activities, Data Flow transformations
+{
+  "name": "DailyETLPipeline",
+  "activities": [
+    {
+      "name": "CopyFromBlobToSQL",
+      "type": "Copy",
+      "source": {"type": "BlobSource"},
+      "sink": {"type": "AzureSqlSink"}
+    }
+  ],
+  "triggers": [
+    {"type": "ScheduleTrigger", "recurrence": {"frequency": "Day"}}
+  ]
+}
