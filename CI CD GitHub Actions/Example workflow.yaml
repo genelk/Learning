@@ -1,0 +1,12 @@
+name: Test ML Code
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: pip install pytest pandas scikit-learn
+      - run: pytest test_model.py
