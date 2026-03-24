@@ -1,0 +1,8 @@
+id,title,artist,year,plays,is_viral
+1,Bohemian Rhapsody,Queen,1975,1200,False
+3,Smells Like Teen Spirit,Nirvana,1991,1100,False
+4,Billie Jean,Michael Jackson,1982,1500,False
+12,Rolling in the Deep,Adele,2010,1800,True
+13,Blinding Lights,The Weeknd,2019,2100,True
+14,Shape of You,Ed Sheeran,2017,1950,True
+10,Enter Sandman,Metallica,1991,1100,False
