@@ -1,3 +1,8 @@
-# Learning
+# Data Engineering Sandbox
 
-Daily practice repository covering Python, SQL, PostgreSQL, pandas and data engineering concepts
+My daily workshops and experiments with Python, SQL, and Data Engineering.
+
+Structure
+    /sql_workshop
+    /python_workshop
+    /projects: Early prototypes of data pipelines

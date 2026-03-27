@@ -1,5 +1,5 @@
-// Pipeline orchestration - like Airflow but Azure-native
-// You'd create pipelines with Copy Data activities, Data Flow transformations
+// Pipeline orchestration
+// Create pipelines with Copy Data activities, Data Flow transformations
 {
   "name": "DailyETLPipeline",
   "activities": [
