@@ -3,6 +3,7 @@
 My daily workshops and experiments with Python, SQL, and Data Engineering.
 
 Structure
+```
 spotify-analysis/
 │
 ├── data/
@@ -12,3 +13,4 @@ spotify-analysis/
 ├── data_audit.ipynb  ←-- drafts - trends and charts
 ├── analysis.ipynb    ←-- final - trends and charts  
 └── README.md         ←-- documentation
+```
