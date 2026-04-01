@@ -3,6 +3,12 @@
 My daily workshops and experiments with Python, SQL, and Data Engineering.
 
 Structure
-    /sql_workshop
-    /python_workshop
-    /projects: Early prototypes of data pipelines
+spotify-analysis/
+│
+├── data/
+│   └── archive       ←-- data zips/files
+│
+├── safe_loader.py    ←-- functions
+├── data_audit.ipynb  ←-- drafts - trends and charts
+├── analysis.ipynb    ←-- final - trends and charts  
+└── README.md         ←-- documentation
