@@ -17,11 +17,10 @@ def load_from_zip(zip_file_name: str, file_name: str):
     Load CSV file from inside a zip without extraction
     """
     # Get path relative to project root
-    zip_path = Path(__file__).parent.parent / 'data' / 'archive' / zip_file_name
+    zip_path = Path(__file__).parent.parent / 'data' / zip_file_name
 
     with zipfile.ZipFile(zip_path, 'r') as z:
-        with z.open(file_name) as f:
+        with z.open(f'data/{file_name}') as f:  # ← ADD 'data/' HERE
             df = pd.read_csv(f)
             logger.info(f"Loaded {file_name} - {df.shape[0]} rows, {df.shape[1]} columns")
-            # print(f"Loaded {file_name} - {df.shape[0]} rows, {df.shape[1]} columns")
             return df
