@@ -1,26 +1,12 @@
-"""
-Data Loading Module for Spotify Analysis
-
-This module handles loading and basic validation of Spotify data
-Functions here should be reusable across multiple notebooks
-"""
-
 import pandas as pd
 import zipfile
-from pathlib import Path
-import logging
 
-logger = logging.getLogger(__name__)
-
-def load_from_zip(zip_file_name: str, file_name: str):
+def load_from_zip(zip_path, internal_file_path):
     """
-    Load CSV file from inside a zip without extraction
+    zip_path: The full path to the .zip file (can be a string or Path object)
+    internal_file_path: The path inside the zip (e.g., 'data/data_w_genres.csv')
     """
-    # Get path relative to project root
-    zip_path = Path(__file__).parent.parent / 'data' / zip_file_name
-
+    # Open the zip file using the exact path provided
     with zipfile.ZipFile(zip_path, 'r') as z:
-        with z.open(f'data/{file_name}') as f:  # ← ADD 'data/' HERE
-            df = pd.read_csv(f)
-            logger.info(f"Loaded {file_name} - {df.shape[0]} rows, {df.shape[1]} columns")
-            return df
+        with z.open(internal_file_path) as f:
+            return pd.read_csv(f)
